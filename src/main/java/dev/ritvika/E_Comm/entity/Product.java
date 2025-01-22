@@ -11,7 +11,7 @@ public class Product extends BaseModel{
     private String title;
     private double price;
     private String description;
-    private String category;
+    private Category category;
     private String imageURL;
     private double rating;
 }

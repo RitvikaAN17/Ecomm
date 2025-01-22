@@ -62,4 +62,15 @@ public class ProductServiceImpl implements ProductService{
         productRepository.deleteById(productId);
         return true;
     }
+
+    @Override
+    public Product findProductByName(String name) {
+        Product findProduct=productRepository.findProductByTitle(name);
+        return findProduct;
+    }
+
+    public List<Product> findProductBetween(double minPrice,double maxPrice) {
+        List<Product> products=productRepository.findByPriceBetween(minPrice, maxPrice);
+        return products;
+    }
 }

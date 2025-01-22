@@ -12,6 +12,8 @@ public interface ProductService {
     Product createProduct(Product product);
     Product updateProduct(Product updatedProduct,UUID productId);
     boolean deleteProduct(UUID productId);
+    Product findProductByName(String name);
+    List<Product> findProductBetween(double minPrice,double maxPrice);
 
 
 }
