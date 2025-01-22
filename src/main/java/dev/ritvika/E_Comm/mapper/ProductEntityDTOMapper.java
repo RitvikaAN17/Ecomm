@@ -2,7 +2,11 @@ package dev.ritvika.E_Comm.mapper;
 
 import dev.ritvika.E_Comm.dto.ProductResponseDTO;
 import dev.ritvika.E_Comm.entity.Product;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ProductEntityDTOMapper {
     public static ProductResponseDTO convertProductEntityToProductResponseDTO(Product product) {
         ProductResponseDTO productResponseDTO=new ProductResponseDTO();
@@ -15,4 +19,6 @@ public class ProductEntityDTOMapper {
         productResponseDTO.setRating(product.getRating());
         return productResponseDTO;
     }
+
+
 }
