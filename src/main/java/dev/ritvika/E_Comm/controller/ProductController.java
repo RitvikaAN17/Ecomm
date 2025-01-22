@@ -3,6 +3,7 @@ package dev.ritvika.E_Comm.controller;
 import dev.ritvika.E_Comm.dto.CreateProductRequestDTO;
 import dev.ritvika.E_Comm.dto.ProductResponseDTO;
 import dev.ritvika.E_Comm.entity.Product;
+import dev.ritvika.E_Comm.mapper.ProductEntityDTOMapper;
 import dev.ritvika.E_Comm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,27 +40,27 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteById(@PathVariable("id") UUID id ) {
+    public ResponseEntity<Boolean> deleteById(@PathVariable("id") UUID id ) {
         return ResponseEntity.ok(
                 productService.deleteProduct(id)
         );
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity updateProduct(@PathVariable("id") UUID id, @RequestBody Product product) {
-        Product updatedProduct=productService.updateProduct(product,id);
-        return ResponseEntity.ok(updatedProduct);
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable("id") UUID id, @RequestBody CreateProductRequestDTO productRequestDTO) {
+        return ResponseEntity.ok(productService.updateProduct(productRequestDTO,id));
     }
 
     //get the product by name
     @GetMapping("/name/{name}")
-    public ResponseEntity getProductByName(@PathVariable("name") String name) {
-        Product product= productService.findProductByName(name);
-        return ResponseEntity.ok(product);
+    public ResponseEntity<ProductResponseDTO> getProductByName(@PathVariable("name") String name) {
+        return ResponseEntity.ok(productService.findProductByName(name));
     }
 
+
+
     @GetMapping("/{min}/{max}")
-    public ResponseEntity findProductBetween(@PathVariable("min") double minPrice , @PathVariable("max") double maxPrice) {
+    public ResponseEntity<List<ProductResponseDTO>> findProductBetween(@PathVariable("min") double minPrice , @PathVariable("max") double maxPrice) {
         return ResponseEntity.ok(productService.findProductBetween(minPrice,maxPrice));
     }
     /*

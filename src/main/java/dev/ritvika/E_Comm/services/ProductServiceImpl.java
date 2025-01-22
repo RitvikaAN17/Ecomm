@@ -62,18 +62,16 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product updateProduct(Product updatedProduct, UUID productId) {
+    public ProductResponseDTO updateProduct(CreateProductRequestDTO updatedProduct, UUID productId) {
         Product savedProduct=productRepository.findById(productId).orElseThrow(
                 () -> new ProductNotFoundException("No product found for the given id")
         );
-        savedProduct.setCategory(updatedProduct.getCategory());
         savedProduct.setTitle(updatedProduct.getTitle());
-        savedProduct.setRating(updatedProduct.getRating());
         savedProduct.setPrice(updatedProduct.getPrice());
         savedProduct.setDescription(updatedProduct.getDescription());
         savedProduct.setImageURL(updatedProduct.getImageURL());
         savedProduct=productRepository.save(savedProduct);
-        return savedProduct;
+        return ProductEntityDTOMapper.convertProductEntityToProductResponseDTO(savedProduct);
     }
 
     @Override
@@ -83,13 +81,14 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product findProductByName(String name) {
+    public ProductResponseDTO findProductByName(String name) {
         Product findProduct=productRepository.findProductByTitle(name);
-        return findProduct;
+        return ProductEntityDTOMapper.convertProductEntityToProductResponseDTO(findProduct);
     }
 
-    public List<Product> findProductBetween(double minPrice,double maxPrice) {
+    public List<ProductResponseDTO> findProductBetween(double minPrice,double maxPrice) {
         List<Product> products=productRepository.findByPriceBetween(minPrice, maxPrice);
-        return products;
+        List<ProductResponseDTO> productResponseDTOS=new ArrayList<>();
+
     }
 }
