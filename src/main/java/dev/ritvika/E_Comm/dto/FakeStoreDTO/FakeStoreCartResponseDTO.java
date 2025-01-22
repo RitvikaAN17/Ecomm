@@ -1,5 +1,6 @@
-package dev.ritvika.E_Comm.dto;
+package dev.ritvika.E_Comm.dto.FakeStoreDTO;
 
+import dev.ritvika.E_Comm.dto.ProductQuantityDTO;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,7 @@
 package dev.ritvika.E_Comm.client;
 
-import dev.ritvika.E_Comm.dto.FakeStoreCartResponseDTO;
-import dev.ritvika.E_Comm.dto.FakeStoreProductResponseDTO;
+import dev.ritvika.E_Comm.dto.FakeStoreDTO.FakeStoreCartResponseDTO;
+import dev.ritvika.E_Comm.dto.FakeStoreDTO.FakeStoreProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

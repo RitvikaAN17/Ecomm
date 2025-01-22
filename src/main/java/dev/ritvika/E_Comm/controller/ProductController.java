@@ -1,8 +1,8 @@
 package dev.ritvika.E_Comm.controller;
 
-import dev.ritvika.E_Comm.dto.FakeStoreProductResponseDTO;
+import dev.ritvika.E_Comm.dto.CreateProductRequestDTO;
+import dev.ritvika.E_Comm.dto.ProductResponseDTO;
 import dev.ritvika.E_Comm.entity.Product;
-import dev.ritvika.E_Comm.exception.RandomException;
 import dev.ritvika.E_Comm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,23 +21,21 @@ public class ProductController {
 
     //get all the products
     @GetMapping
-    public ResponseEntity getAllProducts() {
-        List<Product> products=productService.getAllProducts();
+    public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
+        List<ProductResponseDTO> products=productService.getAllProducts();
         return ResponseEntity.ok(products);
     }
 
     //get products by specific id
     @GetMapping("/{id}")
-    public ResponseEntity getProductById(@PathVariable("id") UUID id) {
-        Product product= productService.getProduct(id);
-        return ResponseEntity.ok(product);
+    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable("id") UUID id) {
+        return ResponseEntity.ok(productService.getProduct(id));
     }
 
     //creating new product
     @PostMapping
-    public ResponseEntity createProduct(@RequestBody Product product) {
-        Product newProduct=productService.createProduct(product);
-        return ResponseEntity.ok(newProduct);
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody CreateProductRequestDTO productRequestDTO) {
+        return ResponseEntity.ok(productService.createProduct(productRequestDTO));
     }
 
     @DeleteMapping("/{id}")
@@ -54,7 +52,7 @@ public class ProductController {
     }
 
     //get the product by name
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity getProductByName(@PathVariable("name") String name) {
         Product product= productService.findProductByName(name);
         return ResponseEntity.ok(product);

@@ -1,7 +1,7 @@
 package dev.ritvika.E_Comm.controller;
 
 import dev.ritvika.E_Comm.client.FakeStoreClient;
-import dev.ritvika.E_Comm.dto.FakeStoreCartResponseDTO;
+import dev.ritvika.E_Comm.dto.FakeStoreDTO.FakeStoreCartResponseDTO;
 import dev.ritvika.E_Comm.exception.CartNotFoundException;
 import dev.ritvika.E_Comm.exception.RandomException;
 import org.springframework.http.ResponseEntity;

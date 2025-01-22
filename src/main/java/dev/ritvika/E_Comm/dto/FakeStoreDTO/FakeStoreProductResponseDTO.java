@@ -1,4 +1,4 @@
-package dev.ritvika.E_Comm.dto;
+package dev.ritvika.E_Comm.dto.FakeStoreDTO;
 
 import lombok.Getter;
 import lombok.Setter;

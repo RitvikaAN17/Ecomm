@@ -1,7 +1,7 @@
 package dev.ritvika.E_Comm.services;
 
 import dev.ritvika.E_Comm.client.FakeStoreClient;
-import dev.ritvika.E_Comm.dto.FakeStoreProductResponseDTO;
+import dev.ritvika.E_Comm.dto.FakeStoreDTO.FakeStoreProductResponseDTO;
 import dev.ritvika.E_Comm.entity.Product;
 import dev.ritvika.E_Comm.exception.NoProductsException;
 import dev.ritvika.E_Comm.exception.ProductNotFoundException;
